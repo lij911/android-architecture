@@ -1,1 +1,3 @@
-include ':app'
+include ':app',
+        ':internal-base:logutil',
+        ':internal-base:network'
