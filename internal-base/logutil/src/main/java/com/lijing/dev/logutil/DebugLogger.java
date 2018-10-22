@@ -3,7 +3,7 @@ package com.lijing.dev.logutil;
 import android.text.TextUtils;
 
 /**
- * L
+ * DebugLog 工具
  *
  * @author lijing
  */
