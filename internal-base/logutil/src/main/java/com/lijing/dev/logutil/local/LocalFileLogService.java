@@ -1,4 +1,4 @@
-package com.lijing.dev.logutil;
+package com.lijing.dev.logutil.local;
 
 import android.app.Service;
 import android.content.Intent;

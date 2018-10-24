@@ -11,11 +11,8 @@ https://juejin.im/post/5bba0f525188255c72285dd8
     https://blog.csdn.net/linshijun33/article/details/64483252
     https://www.jianshu.com/p/7e7270cd00bd
 
-    * 内部存储
-    内部存储是指将应用程序中的数据以文件方式存储到设备的内部存储空间中（该文件位于 data/data/<packagename>/ 目录下）
-
-
-
+* Android 高性能日志写入
+    https://juejin.im/post/5b6d26016fb9a04f86065cdf
 
 
 

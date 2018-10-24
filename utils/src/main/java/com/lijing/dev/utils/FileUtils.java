@@ -67,7 +67,7 @@ public class FileUtils {
          *
          * @return
          */
-        public static boolean useable() {
+        public static boolean usable() {
             return Environment.getExternalStorageState().equals(MEDIA_MOUNTED);
         }
 
@@ -79,7 +79,10 @@ public class FileUtils {
          * @return
          */
         public static File getCustomDir(String suffix) {
-            return new File(SD_ROOT_DIR, suffix);
+            if (usable()) {
+                return new File(SD_ROOT_DIR, suffix);
+            }
+            return null;
         }
 
     }
