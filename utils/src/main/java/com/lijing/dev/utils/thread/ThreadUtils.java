@@ -1,7 +1,5 @@
 package com.lijing.dev.utils.thread;
 
-import android.util.TimeUtils;
-
 import com.lijing.dev.utils.thread.factory.DownloadThreadFactory;
 
 import java.util.concurrent.LinkedBlockingDeque;
@@ -44,7 +42,7 @@ public class ThreadUtils {
                 ThreadConstants.Async.MAXIMUM_POOL_SIZE,
                 ThreadConstants.Async.KEEP_ALIVE_SECONDS,
                 TimeUnit.SECONDS,
-                new LinkedBlockingDeque<Runnable>(128),
+                new LinkedBlockingDeque<>(128),
                 new DownloadThreadFactory(tag)
         );
     }

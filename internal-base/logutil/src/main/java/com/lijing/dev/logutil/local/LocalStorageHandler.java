@@ -6,14 +6,22 @@ import android.os.Looper;
 import android.os.Message;
 
 import com.lijing.dev.utils.FileUtils;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
 
-public class LocalStorgeHandler extends Handler {
+import okio.BufferedSink;
+import okio.Okio;
+import okio.Sink;
+
+/**
+ * @author lijing
+ */
+public class LocalStorageHandler extends Handler {
 
     public static final int PUSH = 1;
     public static final int FLUSH = 2;
@@ -22,12 +30,13 @@ public class LocalStorgeHandler extends Handler {
 
     private File mLogFile;
 
-    public LocalStorgeHandler(Looper looper) {
+    public LocalStorageHandler(Looper looper) {
         super(looper);
-        mLogFile = FileUtils.ExternalStorage.getCustomDir("log");
+        mLogFile = FileUtils.InternalStorage.getCustomDir("log");
+        Logger.i(mLogFile.getAbsolutePath());
     }
 
-    Queue<String> mLogs = new LinkedList<>();
+    LinkedBlockingDeque<String> mLogs = new LinkedBlockingDeque<>(LOG_POOL_SIZE * 2);
 
     @Override
     public void handleMessage(Message msg) {
@@ -49,28 +58,42 @@ public class LocalStorgeHandler extends Handler {
         if (log == null || log.isEmpty()) {
             return;
         }
-        mLogs.offer(log);
+        mLogs.add(log);
         if (mLogs.size() > LOG_POOL_SIZE) {
-            flush();
+            write();
         }
-    }
-
-    private void flush() {
-        if (mLogs.isEmpty()) {
-            return;
-        }
-        LinkedList<String> copy = new LinkedList<>();
-        copy.addAll(mLogs);
-        mLogs.clear();
-        write(copy);
     }
 
     /**
      * 写入文件
+     * 使用 okio
+     */
+    private void write() {
+        if (mLogFile == null) {
+            return;
+        }
+        try (
+                Sink mSink = Okio.appendingSink(mLogFile);
+                BufferedSink buffer = Okio.buffer(mSink);
+        ) {
+            while (!mLogs.isEmpty()) {
+                buffer.writeUtf8(mLogs.pollFirst());
+            }
+            buffer.flush();
+            mSink.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 写入文件
+     * 使用 java 的I/O
      *
      * @param logs
      */
-    private void write(LinkedList<String> logs) {
+    @Deprecated
+    private void write_v1(LinkedList<String> logs) {
         if (mLogFile == null) {
             return;
         }
@@ -86,5 +109,9 @@ public class LocalStorgeHandler extends Handler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void destroy() {
+        write();
     }
 }

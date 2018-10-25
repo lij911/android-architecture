@@ -1,7 +1,5 @@
 package com.lijing.dev.utils;
 
-import android.support.annotation.Nullable;
-
 import java.io.Closeable;
 import java.io.IOException;
 
@@ -14,7 +12,7 @@ public class IoUtils {
      *
      * @param closeable
      */
-    public static void safeClose(@Nullable Closeable closeable) {
+    public static void safeClose( Closeable closeable) {
         if (closeable == null) {
             return;
         }

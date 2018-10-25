@@ -1,12 +1,12 @@
 package com.lijing.dev.utils.thread.factory;
 
-import android.support.annotation.NonNull;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 下载所用到的 ThreadFactory
+ * @author lijing
  */
 public class DownloadThreadFactory implements ThreadFactory {
 
@@ -19,7 +19,7 @@ public class DownloadThreadFactory implements ThreadFactory {
     }
 
     @Override
-    public Thread newThread(@NonNull Runnable runnable) {
+    public Thread newThread(Runnable runnable) {
         Thread thread = new Thread();
         thread.setName(tag + "_" + mAtomicInteger.getAndIncrement());
         return thread;

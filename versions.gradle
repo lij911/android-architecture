@@ -8,8 +8,9 @@ versions.rxjava = "2.1.8"
 versions.rx_android = "2.0.1"
 
 versions.retrofit = "2.4.0"
-versions.okhttp = "3.10.0"
 
+versions.okhttp = "3.10.0"
+versions.okio = "2.1.0"
 versions.javapoet = "1.9.0"
 versions.fresco = "1.10.0"
 versions.leakcanary = "1.6.1"
@@ -50,6 +51,7 @@ deps.rxjava2 = rxjava2
 def squareup = [:]
 squareup.javapoet = "com.squareup:javapoet:$versions.javapoet"
 squareup.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+squareup.okio = "com.squareup.okio:okio:$versions.okio"
 squareup.leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
 squareup.leakcanary = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 deps.squareup = squareup
