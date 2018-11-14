@@ -6,7 +6,7 @@ if (is_independent_module.toBoolean()) {
 
 android {
     defaultConfig {
-        resourcePrefix "network_"
+        resourcePrefix "widget_"
     }
     sourceSets {
         main {
@@ -20,5 +20,4 @@ android {
 }
 
 dependencies {
-    implementation deps.support.app_compat
 }
