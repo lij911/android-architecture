@@ -32,6 +32,8 @@ support.fragment = "com.android.support:support-fragment:$versions.support"
 support.emoji = "com.android.support:support-emoji:$versions.support"
 deps.support = support
 
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+
 // retrofit 和 okhttp 相关
 def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
@@ -56,13 +58,20 @@ squareup.leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$v
 squareup.leakcanary = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 deps.squareup = squareup
 
-deps.gson = "com.google.code.gson:gson:$versions.gson"
-
-
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
 
-deps.logger = "com.orhanobut:logger:$versions.logger"
-deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+// gson
+deps.gson = "com.google.code.gson:gson:$versions.gson"
 
+deps.logger = "com.orhanobut:logger:$versions.logger"
+
+// junit
+deps.junit = "junit:junit:4.12"
+
+// android test 相关
+def android_test = [:]
+android_test.runner = "com.android.support.test:runner:1.0.2"
+android_test.espresso = "com.android.support.test.espresso:espresso-core:3.0.2"
+deps.android_test = android_test
 
 ext.deps = deps
