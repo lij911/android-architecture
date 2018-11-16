@@ -74,4 +74,11 @@ android_test.runner = "com.android.support.test:runner:1.0.2"
 android_test.espresso = "com.android.support.test.espresso:espresso-core:3.0.2"
 deps.android_test = android_test
 
+
+def widget = [:]
+widget.refresh_layout = "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
+
+
+deps.widget = widget
+
 ext.deps = deps
