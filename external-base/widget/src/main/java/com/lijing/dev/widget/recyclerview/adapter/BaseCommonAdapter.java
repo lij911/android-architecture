@@ -2,10 +2,10 @@ package com.lijing.dev.widget.recyclerview.adapter;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
+import android.support.annotation.IntRange;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,13 +25,12 @@ import java.util.List;
  *
  * @author lijing
  */
-public class BaseCommonAdapter<T, VH extends BaseViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends RecyclerView.Adapter<VH> {
 
     protected int mItemResId;
     protected List<T> mData;
     protected Context mContext;
     protected LayoutInflater mLayoutInflater;
-    private RecyclerView mRecyclerView;
 
 
     public BaseCommonAdapter(@IdRes int layoutId, @Nullable List<T> data) {
@@ -45,24 +44,25 @@ public class BaseCommonAdapter<T, VH extends BaseViewHolder> extends RecyclerVie
         this(layoutId, null);
     }
 
-
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
         mLayoutInflater = LayoutInflater.from(mContext);
-        VH viewHolder = createBaseViewHolder(viewGroup, i);
-        return viewHolder;
+        return createBaseViewHolder(viewGroup, i);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH vh, int i) {
-
+        convert(vh, getItem(i), i);
     }
+
+
+    protected abstract void convert(VH helper, T item, int postion);
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mData.size();
     }
 
 
@@ -137,9 +137,28 @@ public class BaseCommonAdapter<T, VH extends BaseViewHolder> extends RecyclerVie
         return null;
     }
 
+    private T getItem(@IntRange(from = 0) int pos) {
+        if (pos > 0 && pos < mData.size()) {
+            return mData.get(pos);
+        }
+        return null;
+    }
 
     protected View getItemView(@LayoutRes int layoutResId, ViewGroup parent) {
         return mLayoutInflater.inflate(layoutResId, parent, false);
+    }
+
+    @Deprecated
+    public List<T> getData() {
+        return mData;
+    }
+
+    public void addItem(T item) {
+        if (item == null) {
+            return;
+        }
+        mData.add(item);
+        notifyItemInserted(mData.size() - 1);
     }
 
 }
