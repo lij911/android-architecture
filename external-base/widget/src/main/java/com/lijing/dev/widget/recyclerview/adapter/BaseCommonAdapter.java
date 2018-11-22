@@ -11,15 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.security.spec.PSSParameterSpec;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -34,6 +33,8 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
     protected List<T> mData;
     protected Context mContext;
     protected LayoutInflater mLayoutInflater;
+    private LinkedList<OnItemClickListener> mOnItemClickListeners;
+    private LinkedList<OnItemLongClickListener> mOnItemLongClickListeners;
 
 
     public BaseCommonAdapter(@IdRes int layoutId, @Nullable List<T> data) {
@@ -58,6 +59,7 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
     @Override
     public void onBindViewHolder(@NonNull VH vh, int i) {
         convert(vh, getItem(i), i);
+        onBindClickListeners(vh, i);
     }
 
     @Override
@@ -175,7 +177,61 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
         notifyItemRangeRemoved(0, size);
     }
 
+    /* listener function */
+
+    private void onBindClickListeners(@NonNull VH vh, int i) {
+
+        if (mOnItemClickListeners != null && !mOnItemClickListeners.isEmpty()) {
+            for (OnItemClickListener onItemClickListener : mOnItemClickListeners) {
+                vh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onItemClickListener.onItemClick(vh, view, i);
+                    }
+                });
+            }
+        }
+
+        if (mOnItemLongClickListeners != null && !mOnItemLongClickListeners.isEmpty()) {
+            for (OnItemLongClickListener onItemLongClickListener : mOnItemLongClickListeners) {
+                vh.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return onItemLongClickListener.onItemLongClick(vh, view, i);
+                    }
+                });
+            }
+        }
+    }
+
+    public void addOnItemClickListener(OnItemClickListener listener) {
+        if (mOnItemClickListeners == null) {
+            mOnItemClickListeners = new LinkedList<>();
+        }
+        mOnItemClickListeners.add(listener);
+    }
+
+    public void clearOnItemClickListener() {
+        if (mOnItemClickListeners != null) {
+            mOnItemClickListeners.clear();
+        }
+    }
+
+    public void addOnItemLongClickListener(OnItemLongClickListener listener) {
+        if (mOnItemLongClickListeners == null) {
+            mOnItemLongClickListeners = new LinkedList<>();
+        }
+        mOnItemLongClickListeners.add(listener);
+    }
+
+    public void clearOnItemLongClickListener() {
+        if (mOnItemLongClickListeners != null) {
+            mOnItemLongClickListeners.clear();
+        }
+    }
+
     /* private function */
+
 
     private Class getViewHolderGenericClass(Class myClass) {
         Type genericSuperclass = myClass.getGenericSuperclass();
@@ -224,5 +280,14 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public interface OnItemClickListener<T> {
+        void onItemClick(BaseViewHolder viewHolder, View view, int position);
+    }
+
+    public interface OnItemLongClickListener<T> {
+        boolean onItemLongClick(BaseViewHolder viewHolder, View view, int position);
     }
 }

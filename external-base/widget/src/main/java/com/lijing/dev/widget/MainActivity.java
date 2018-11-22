@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.lijing.dev.widget.recyclerview.adapter.BaseCommonAdapter;
 import com.lijing.dev.widget.recyclerview.adapter.BaseViewHolder;
@@ -25,12 +26,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MainAdapter adapter = new MainAdapter(R.layout.widget_main_item, null);
         recyclerView.setAdapter(adapter);
-        ArrayList<String> strings = new ArrayList<>();
         adapter.addItems("item 1", "item 2", "item 3");
         adapter.addItems(0, "item A", "item B", "item C");
-        adapter.setItem(2, "item S");
-        adapter.removeItem(3);
-        adapter.removeItems(3, 2);
+        adapter.addOnItemClickListener((viewHolder, position) -> {
+            Toast.makeText(this, adapter.getItem(position), Toast.LENGTH_SHORT).show();
+        });
     }
 
     private class MainAdapter extends BaseCommonAdapter<String, BaseViewHolder> {
