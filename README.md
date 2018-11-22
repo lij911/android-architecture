@@ -1,4 +1,5 @@
 # android-architecture
+记录架构过程中遇到的知识点
 
 * 开端
 https://juejin.im/post/5bba0f525188255c72285dd8
@@ -19,3 +20,7 @@ https://juejin.im/post/5bba0f525188255c72285dd8
     http://loveshisong.cn/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/2016-02-16-Type%E8%AF%A6%E8%A7%A3.html
 
 
+
+
+* 精简项目
+    https://juejin.im/post/5bea3b01f265da61193b605d

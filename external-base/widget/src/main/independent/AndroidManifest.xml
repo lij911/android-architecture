@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lijing.dev.widget">
 
-    <application android:theme="@style/widget_custom_style">
+    <application
+        android:label="lib_widget"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

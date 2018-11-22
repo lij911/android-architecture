@@ -11,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.security.spec.PSSParameterSpec;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,14 +60,12 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
         convert(vh, getItem(i), i);
     }
 
-
-    protected abstract void convert(VH helper, T item, int postion);
-
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
+    /* view holder 和 view 的创建和关联 */
 
     protected VH createBaseViewHolder(@NonNull ViewGroup parent, int i) {
         return createBaseViewHolder(getItemView(mItemResId, parent));
@@ -87,6 +88,94 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
         }
         return k != null ? k : (VH) new BaseViewHolder(view);
     }
+
+    protected View getItemView(@LayoutRes int layoutResId, ViewGroup parent) {
+        return mLayoutInflater.inflate(layoutResId, parent, false);
+    }
+
+    /**
+     * view holder 和 items 的关联
+     *
+     * @param helper
+     * @param item
+     * @param position
+     */
+    protected abstract void convert(VH helper, T item, int position);
+
+    /* data modify function */
+
+    @Deprecated
+    public List<T> getData() {
+        return mData;
+    }
+
+    public final T getItem(@IntRange(from = 0) int pos) {
+        if (pos >= 0 && pos < mData.size()) {
+            return mData.get(pos);
+        }
+        return null;
+    }
+
+    @SafeVarargs
+    public final void addItems(T... items) {
+        addItems(mData.size(), items);
+    }
+
+
+    @SafeVarargs
+    public final void addItems(@IntRange(from = 0) int startPosition, T... items) {
+        if (items.length == 0) {
+            return;
+        }
+        addItems(startPosition, Arrays.asList(items));
+    }
+
+    public final void addItems(List<T> items) {
+        addItems(mData.size(), items);
+    }
+
+    public final void addItems(@IntRange(from = 0) int startPosition, List<T> items) {
+        if (items == null || items.size() == 0) {
+            return;
+        }
+        mData.addAll(startPosition, items);
+        notifyItemRangeInserted(startPosition, items.size());
+    }
+
+
+    public final void setItem(@IntRange(from = 0) int pos, T item) {
+        if (item == null || pos < 0 || pos >= mData.size()) {
+            return;
+        }
+        mData.set(pos, item);
+        notifyItemChanged(pos);
+    }
+
+    public final void removeItem(T item) {
+        removeItem(mData.indexOf(item));
+    }
+
+    public final void removeItem(@IntRange(from = 0) int pos) {
+        removeItems(pos, 1);
+    }
+
+    public final void removeItems(@IntRange(from = 0) int start, int count) {
+        if (start < 0 || start + count > mData.size()) {
+            return;
+        }
+        for (int i = start + count - 1; i >= start; i--) {
+            mData.remove(i);
+        }
+        notifyItemRangeRemoved(start, count);
+    }
+
+    public final void clearData() {
+        int size = mData.size();
+        mData.clear();
+        notifyItemRangeRemoved(0, size);
+    }
+
+    /* private function */
 
     private Class getViewHolderGenericClass(Class myClass) {
         Type genericSuperclass = myClass.getGenericSuperclass();
@@ -136,29 +225,4 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
         }
         return null;
     }
-
-    private T getItem(@IntRange(from = 0) int pos) {
-        if (pos > 0 && pos < mData.size()) {
-            return mData.get(pos);
-        }
-        return null;
-    }
-
-    protected View getItemView(@LayoutRes int layoutResId, ViewGroup parent) {
-        return mLayoutInflater.inflate(layoutResId, parent, false);
-    }
-
-    @Deprecated
-    public List<T> getData() {
-        return mData;
-    }
-
-    public void addItem(T item) {
-        if (item == null) {
-            return;
-        }
-        mData.add(item);
-        notifyItemInserted(mData.size() - 1);
-    }
-
 }

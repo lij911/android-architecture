@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.lijing.dev.widget.recyclerview.adapter.BaseCommonAdapter;
 import com.lijing.dev.widget.recyclerview.adapter.BaseViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,21 +25,23 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MainAdapter adapter = new MainAdapter(R.layout.widget_main_item, null);
         recyclerView.setAdapter(adapter);
-        adapter.addItem(new Object());
-        adapter.addItem(new Object());
-        adapter.addItem(new Object());
-        adapter.notifyDataSetChanged();
+        ArrayList<String> strings = new ArrayList<>();
+        adapter.addItems("item 1", "item 2", "item 3");
+        adapter.addItems(0, "item A", "item B", "item C");
+        adapter.setItem(2, "item S");
+        adapter.removeItem(3);
+        adapter.removeItems(3, 2);
     }
 
-    private class MainAdapter extends BaseCommonAdapter<Object, BaseViewHolder> {
+    private class MainAdapter extends BaseCommonAdapter<String, BaseViewHolder> {
 
-        public MainAdapter(int layoutId, @Nullable List<Object> data) {
+        public MainAdapter(int layoutId, @Nullable List<String> data) {
             super(layoutId, data);
         }
 
         @Override
-        protected void convert(BaseViewHolder helper, Object item, int postion) {
-            helper.setText(R.id.tv_title, "123");
+        protected void convert(BaseViewHolder helper, String item, int position) {
+            helper.setText(R.id.tv_title, item);
         }
     }
 }
