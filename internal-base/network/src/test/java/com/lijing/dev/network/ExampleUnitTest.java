@@ -1,15 +1,11 @@
 package com.lijing.dev.network;
 
-import com.lijing.dev.network.di.DaggerApiComponent;
-import com.lijing.dev.network.di.NetworkModule;
+
+import com.lijing.dev.network.test.TestPresenter;
 
 import org.junit.Test;
 
-import javax.inject.Inject;
-
-import io.reactivex.Observable;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -22,11 +18,9 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-    @Inject
-    TestApiService mTestApiService;
-
     @Test
     public void networkTest(){
-        Observable<Object> test = mTestApiService.test();
+        TestPresenter testPresenter = new TestPresenter();
+        testPresenter.test();
     }
 }

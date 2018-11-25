@@ -1,7 +1,7 @@
 package com.lijing.dev.network.di;
 
 
-import com.lijing.dev.network.TestApiService;
+import com.lijing.dev.network.test.TestApiService;
 
 import javax.inject.Inject;
 

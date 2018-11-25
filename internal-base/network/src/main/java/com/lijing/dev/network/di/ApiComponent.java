@@ -1,5 +1,7 @@
 package com.lijing.dev.network.di;
 
+import com.lijing.dev.network.test.TestPresenter;
+
 import dagger.Component;
 
 /**
@@ -8,4 +10,5 @@ import dagger.Component;
 @Component(modules = {ApiModule.class})
 public interface ApiComponent {
 
+    void inject(TestPresenter testPresenter);
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.lijing.dev.network.di.DaggerApiComponent;
+import com.lijing.dev.network.test.TestPresenter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,12 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
-        DaggerApiComponent.builder().build().inject(this);
         assertEquals("com.lijing.dev.network.test", appContext.getPackageName());
+    }
+
+    @Test
+    public void networkTest(){
+        TestPresenter testPresenter = new TestPresenter();
+        testPresenter.test();
     }
 }
