@@ -9,8 +9,14 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
+
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

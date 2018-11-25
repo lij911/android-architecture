@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.addItems("item 1", "item 2", "item 3");
         adapter.addItems(0, "item A", "item B", "item C");
-        adapter.addOnItemClickListener((viewHolder, position) -> {
+        adapter.addOnItemClickListener((viewHolder, view, position) -> {
             Toast.makeText(this, adapter.getItem(position), Toast.LENGTH_SHORT).show();
         });
     }
