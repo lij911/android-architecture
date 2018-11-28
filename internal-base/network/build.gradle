@@ -5,6 +5,8 @@ android {
     }
 }
 dependencies {
+//    implementation project(path: ':internal-base:utils')
+
     testImplementation deps.junit
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.espresso
@@ -16,5 +18,4 @@ dependencies {
     implementation deps.retrofit.rxjava2
     implementation deps.google.dagger
     implementation deps.google.dagger_compiler
-
 }

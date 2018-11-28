@@ -1,5 +1,7 @@
 package com.lijing.dev.network.test;
 
+import com.lijing.dev.network.response.ApiResponseObserver;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 
@@ -8,5 +10,5 @@ import retrofit2.http.GET;
  */
 public interface TestApiService {
     @GET("test")
-    Observable<Object> test();
+    Observable<ApiResponseObserver<Object>> test();
 }
