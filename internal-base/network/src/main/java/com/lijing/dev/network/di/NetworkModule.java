@@ -3,11 +3,14 @@ package com.lijing.dev.network.di;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lijing.dev.network.BuildConfig;
+import com.lijing.dev.network.GeneralParams;
 import com.lijing.dev.network.Interceptor.BasicParamsInterceptor;
 import com.lijing.dev.network.NetworkConstant;
 import com.lijing.dev.network.converter.CustomGsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,6 +26,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 public class NetworkModule {
 
     @Provides
+    @Singleton
     OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor, BasicParamsInterceptor basicParamsInterceptor) {
 
 
@@ -39,6 +43,7 @@ public class NetworkModule {
     }
 
     @Provides
+    @Singleton
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit
                 .Builder()
@@ -50,6 +55,7 @@ public class NetworkModule {
     }
 
     @Provides
+    @Singleton
     HttpLoggingInterceptor provideHttpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
@@ -61,13 +67,19 @@ public class NetworkModule {
     }
 
     @Provides
+    @Singleton
     Gson provideGson() {
-        // TODO: 2018/11/25
         return new GsonBuilder().create();
     }
 
     @Provides
+    @Singleton
     BasicParamsInterceptor provideBasicParamsInterceptor() {
-        return new BasicParamsInterceptor.Builder().build();
+        return new BasicParamsInterceptor.Builder()
+                .addFilterUrls(GeneralParams.FILTER_URLS)
+                .addHeaderParamsMap(GeneralParams.HEADER_PARAMS)
+                .addBodyParamsMap(GeneralParams.BODY_PARAMS)
+                .addQueryParamsMap(GeneralParams.QUERY_PARAMS)
+                .build();
     }
 }

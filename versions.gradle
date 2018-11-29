@@ -80,6 +80,5 @@ deps.android_test = android_test
 deps.widget = widget
 
 deps.junit = "junit:junit:4.12"
-deps.logger = "com.orhanobut:logger:$versions.logger"
 
 ext.deps = deps

@@ -2,6 +2,7 @@ package com.lijing.dev.network;
 
 
 import com.lijing.dev.network.test.TestPresenter;
+import com.lijing.dev.network.test.TestPresenter2;
 
 import org.junit.Test;
 
@@ -19,8 +20,15 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void networkTest(){
+    public void networkTest() {
         TestPresenter testPresenter = new TestPresenter();
         testPresenter.test();
+
+        TestPresenter2 testPresenter2 = new TestPresenter2();
+        testPresenter2.test();
+
+        if (testPresenter.mTestApiService == testPresenter.mTestApiService) {
+            System.out.print(123);
+        }
     }
 }

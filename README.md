@@ -24,3 +24,8 @@ https://juejin.im/post/5bba0f525188255c72285dd8
 
 * 精简项目
     https://juejin.im/post/5bea3b01f265da61193b605d
+
+* dagger2
+    https://juejin.im/entry/587499ff128fe1006b42f7de
+    dagger 的 @Singleton 注解只能保证同个 component 注入的是同一个对象，所以要保证真正的单例需要同时保证 component 是唯一的
+    retrofit 的 create 能保证单例，所以可以用不同的 component 注入（但是我现在懒的改了

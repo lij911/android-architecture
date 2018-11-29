@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class TestPresenter {
+public class TestPresenter2 {
 
     @Inject
     public TestApiService mTestApiService;
@@ -16,7 +16,7 @@ public class TestPresenter {
     protected CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
 
-    public TestPresenter() {
+    public TestPresenter2() {
         DaggerBaseApiComponent.create().inject(this);
     }
 

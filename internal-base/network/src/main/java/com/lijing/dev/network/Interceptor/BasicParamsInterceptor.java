@@ -22,15 +22,13 @@ import okio.Buffer;
 public class BasicParamsInterceptor implements Interceptor {
 
     private Map<String, String> headerParamsMap = new HashMap<>();
-    private List<String> headerLinesList = new ArrayList<>();
-
     private Map<String, String> queryParamsMap = new HashMap<>();
     private Map<String, String> bodyParamsMap = new HashMap<>();
 
     private List<String> urlWhitelist = new ArrayList<>();
 
-    public static final String POST = "POST";
-    public static final String X_WWW_FORM_URLENCODED = "x-www-form-urlencoded";
+    private static final String POST = "POST";
+    private static final String X_WWW_FORM_URLENCODED = "x-www-form-urlencoded";
 
     private BasicParamsInterceptor() {
 
@@ -49,7 +47,7 @@ public class BasicParamsInterceptor implements Interceptor {
         if (!headerParamsMap.isEmpty()) {
             injectHeaderParams(headerBuilder);
         }
-        // 直接拼接 params 到 url 中
+        // GET 请求，直接拼接 params 到 url 中
         if (queryParamsMap.size() > 0) {
             injectParamsIntoUrl(request, requestBuilder, queryParamsMap);
         }
@@ -69,9 +67,8 @@ public class BasicParamsInterceptor implements Interceptor {
      *
      * @param request
      * @return
-     * @throws IOException
      */
-    private boolean filterWhitelist(Request request) throws IOException {
+    private boolean filterWhitelist(Request request) {
         // filter white url
         for (String url : urlWhitelist) {
             String s = request.url().encodedPath();
@@ -91,12 +88,6 @@ public class BasicParamsInterceptor implements Interceptor {
         if (headerParamsMap.size() > 0) {
             for (Map.Entry entry : headerParamsMap.entrySet()) {
                 headerBuilder.add((String) entry.getKey(), (String) entry.getValue());
-            }
-        }
-
-        if (headerLinesList.size() > 0) {
-            for (String line : headerLinesList) {
-                headerBuilder.add(line);
             }
         }
     }
@@ -126,7 +117,8 @@ public class BasicParamsInterceptor implements Interceptor {
     }
 
     /**
-     * 拼接参数到 header url 中
+     * 拼接参数到 request url 中
+     *
      * @param request
      * @param requestBuilder
      * @param paramsMap
@@ -138,7 +130,6 @@ public class BasicParamsInterceptor implements Interceptor {
                 httpUrlBuilder.addQueryParameter((String) entry.getKey(), (String) entry.getValue());
             }
         }
-
         requestBuilder.url(httpUrlBuilder.build());
     }
 
@@ -165,13 +156,13 @@ public class BasicParamsInterceptor implements Interceptor {
             interceptor = new BasicParamsInterceptor();
         }
 
-        public Builder addParam(String key, String value) {
-            interceptor.bodyParamsMap.put(key, value);
+        public Builder addFilterUrl(String filterUrl) {
+            interceptor.urlWhitelist.add(filterUrl);
             return this;
         }
 
-        public Builder addParamsMap(Map<String, String> paramsMap) {
-            interceptor.bodyParamsMap.putAll(paramsMap);
+        public Builder addFilterUrls(List<String> filterUrls) {
+            interceptor.urlWhitelist.addAll(filterUrls);
             return this;
         }
 
@@ -185,28 +176,13 @@ public class BasicParamsInterceptor implements Interceptor {
             return this;
         }
 
-        public Builder addHeaderLine(String headerLine) {
-            int index = headerLine.indexOf(":");
-            if (index == -1) {
-                throw new IllegalArgumentException("Unexpected header: " + headerLine);
-            }
-            interceptor.headerLinesList.add(headerLine);
+        public Builder addBodyParam(String key, String value) {
+            interceptor.bodyParamsMap.put(key, value);
             return this;
         }
 
-        public Builder addHeaderLinesList(List<String> headerLinesList) {
-            for (String headerLine : headerLinesList) {
-                int index = headerLine.indexOf(":");
-                if (index == -1) {
-                    throw new IllegalArgumentException("Unexpected header: " + headerLine);
-                }
-                interceptor.headerLinesList.add(headerLine);
-            }
-            return this;
-        }
-
-        public Builder addWhiteListUrl(String whiteUrl) {
-            interceptor.urlWhitelist.add(whiteUrl);
+        public Builder addBodyParamsMap(Map<String, String> paramsMap) {
+            interceptor.bodyParamsMap.putAll(paramsMap);
             return this;
         }
 
@@ -223,6 +199,5 @@ public class BasicParamsInterceptor implements Interceptor {
         public BasicParamsInterceptor build() {
             return interceptor;
         }
-
     }
 }
