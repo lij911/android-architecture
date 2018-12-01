@@ -25,7 +25,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -36,5 +37,4 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.espresso
-
 }

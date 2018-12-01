@@ -15,6 +15,7 @@ import com.lijing.dev.mvps.presenter.BaseAbstractPresenter;
 
 import javax.inject.Inject;
 
+
 /**
  * 我们的目标是，尽量不用 fragment
  * 2.0 该用还是要用啊
@@ -22,6 +23,7 @@ import javax.inject.Inject;
  * @author lijing
  */
 public abstract class BaseAbstractFragment<P extends BaseAbstractPresenter> extends Fragment implements IBaseFragment {
+
     protected final String TAG = this.getClass().getSimpleName();
 
     @Inject

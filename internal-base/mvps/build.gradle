@@ -7,11 +7,10 @@ dependencies {
     implementation project(path: ':internal-base:network')
 
     implementation deps.support.constraint_layout
-
-
     implementation deps.rxjava2.rxjava
     implementation deps.rxjava2.rxandroid
-
+    implementation deps.google.dagger
+    annotationProcessor deps.google.dagger_compiler
     implementation deps.widget.hud
 
 

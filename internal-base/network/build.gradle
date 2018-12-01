@@ -6,6 +6,7 @@ android {
 }
 dependencies {
 //    implementation project(path: ':internal-base:utils')
+    implementation deps.jetbrains.annotations
 
 
     implementation deps.squareup.okhttp3
@@ -14,5 +15,5 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
     implementation deps.google.dagger
-    implementation deps.google.dagger_compiler
+    annotationProcessor deps.google.dagger_compiler
 }

@@ -17,12 +17,13 @@ import javax.inject.Inject;
  */
 public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> extends AppCompatActivity implements IBaseActivity {
 
+    protected final String TAG = this.getClass().getSimpleName();
+
     @Inject
     protected P mPresenter;
 
     protected KProgressHUD mProgressHUD;
 
-    protected final String TAG = this.getClass().getSimpleName();
 
     /**
      * Activity 初始化时调用，用于设置全局数据

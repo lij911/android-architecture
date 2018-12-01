@@ -1,15 +1,38 @@
 package com.lijing.dev.mvps.test;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.lijing.dev.mvps.R;
+import com.lijing.dev.mvps.activity.BaseAbstractActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAbstractActivity<MainPresenter> {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getContentLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initVariables() {
+
+    }
+
+    @Override
+    public void initViews() {
+
+    }
+
+    @Override
+    public void initEvents() {
+
+    }
+
+    @Override
+    public void initInject() {
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 }

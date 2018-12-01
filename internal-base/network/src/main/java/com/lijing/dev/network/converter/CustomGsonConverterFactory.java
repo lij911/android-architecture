@@ -5,11 +5,11 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-
-import javax.annotation.Nullable;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;

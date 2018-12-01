@@ -1,5 +1,7 @@
 package com.lijing.dev.mvps.fragment;
 
+import android.support.annotation.LayoutRes;
+
 import com.lijing.dev.mvps.IBaseView;
 
 /**
@@ -11,7 +13,9 @@ public interface IBaseFragment extends IBaseView {
      *
      * @return
      */
+    @LayoutRes
     int getContentLayoutID();
+
     /**
      * 初始化变量
      */

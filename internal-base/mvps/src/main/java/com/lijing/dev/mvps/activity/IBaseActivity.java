@@ -1,5 +1,7 @@
 package com.lijing.dev.mvps.activity;
 
+import android.support.annotation.LayoutRes;
+
 import com.lijing.dev.mvps.IBaseView;
 
 /**
@@ -14,6 +16,7 @@ public interface IBaseActivity extends IBaseView {
      *
      * @return
      */
+    @LayoutRes
     int getContentLayoutID();
 
     /**
