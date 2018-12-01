@@ -1,11 +1,17 @@
 package com.lijing.dev.utils;
 
+import android.app.Application;
 import android.content.Context;
+
+import com.squareup.leakcanary.LeakCanary;
 
 import java.lang.ref.WeakReference;
 
+import javax.xml.transform.sax.SAXTransformerFactory;
+
 /**
- * 全局获取 context 的工具类
+ * 全局 context 的工具类
+ *
  * @author lijing
  */
 public class ContextUtils {
@@ -28,9 +34,23 @@ public class ContextUtils {
 
     /**
      * 获取 context
+     *
      * @return
      */
     public static Context getContext() {
         return sContextWeakReference.get();
     }
+
+    /**
+     * 注入 LeakCanary
+     *
+     * @param application
+     */
+    public static void injectLeakCanary(Application application) {
+        if (LeakCanary.isInAnalyzerProcess(application)) {
+            return;
+        }
+        LeakCanary.install(application);
+    }
+
 }

@@ -65,10 +65,12 @@ squareup.leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$v
 def android_test = [:]
 android_test.runner = "com.android.support.test:runner:1.0.2"
 android_test.espresso = "com.android.support.test.espresso:espresso-core:3.0.2"
+deps.junit = "junit:junit:4.12"
 
 // widget
 def widget = [:]
 widget.refresh_layout = "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
+widget.hud = "com.kaopiz:kprogresshud:1.2.0"
 
 
 deps.rxjava2 = rxjava2
@@ -78,7 +80,5 @@ deps.google = google
 deps.support = support
 deps.android_test = android_test
 deps.widget = widget
-
-deps.junit = "junit:junit:4.12"
 
 ext.deps = deps

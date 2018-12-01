@@ -1,4 +1,6 @@
 apply from: rootProject.file('library.gradle')
 
 dependencies {
+    debugImplementation deps.squareup.leakcanary
+    releaseImplementation deps.squareup.leakcanary_no_op
 }

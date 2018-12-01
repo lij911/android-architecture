@@ -7,9 +7,6 @@ android {
 dependencies {
 //    implementation project(path: ':internal-base:utils')
 
-    testImplementation deps.junit
-    androidTestImplementation deps.android_test.runner
-    androidTestImplementation deps.android_test.espresso
 
     implementation deps.squareup.okhttp3
     implementation deps.squareup.okhttp_logging_interceptor

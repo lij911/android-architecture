@@ -31,3 +31,10 @@ android {
     }
 
 }
+
+dependencies {
+    testImplementation deps.junit
+    androidTestImplementation deps.android_test.runner
+    androidTestImplementation deps.android_test.espresso
+
+}
