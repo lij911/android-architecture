@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 
 android {
@@ -37,4 +38,6 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.espresso
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 }

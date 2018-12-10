@@ -30,10 +30,22 @@ public abstract class ApiResponseObserver<T> extends DisposableObserver<T> {
         onComplete(true);
     }
 
-    abstract protected void onSuccess(T t);
+    /**
+     * 成功后调用的方法
+     * @param response
+     */
+    abstract protected void onSuccess(T response);
 
+    /**
+     * 请求失败后调用的方法
+     * @param e
+     */
     abstract protected void onError(Exception e);
 
+    /**
+     * 请求完成后调用的方法
+     * @param isSuccess 是否成功
+     */
     abstract protected void onComplete(boolean isSuccess);
 
 }

@@ -1,5 +1,7 @@
 package com.lijing.dev.mvps.presenter;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 
 import com.lijing.dev.mvps.IBaseView;
@@ -17,9 +19,10 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBasePresenter {
 
     protected V mView;
-    protected CompositeDisposable mCompositeDisposable;
+    private CompositeDisposable mCompositeDisposable;
 
-
+    protected LiveData<Boolean> mLiveHud = new MutableLiveData<>();
+    protected LiveData<String> mLiveMessage = new MutableLiveData<>();
 
     public BaseAbstractPresenter() {
     }
