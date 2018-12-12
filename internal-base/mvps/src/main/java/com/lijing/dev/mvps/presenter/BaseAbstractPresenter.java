@@ -1,10 +1,9 @@
 package com.lijing.dev.mvps.presenter;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 
 import com.lijing.dev.mvps.IBaseView;
+import com.lijing.dev.mvps.live.SingleLiveEvent;
 import com.lijing.dev.network.response.ApiResponseObserver;
 
 import io.reactivex.Observable;
@@ -18,11 +17,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBasePresenter {
 
-    protected V mView;
+    private V mView;
     private CompositeDisposable mCompositeDisposable;
 
-    protected LiveData<Boolean> mLiveHud = new MutableLiveData<>();
-    protected LiveData<String> mLiveMessage = new MutableLiveData<>();
+    public SingleLiveEvent<Boolean> mLiveHud = new SingleLiveEvent<>();
+    public SingleLiveEvent<String> mLiveMessage = new SingleLiveEvent<>();
 
     public BaseAbstractPresenter() {
     }
@@ -55,6 +54,7 @@ public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBas
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void subscribe(Observable observable, ApiResponseObserver abstractApiResponseObserver) {
         observable
                 .subscribeOn(Schedulers.io())
@@ -69,6 +69,14 @@ public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBas
             mCompositeDisposable.clear();
             mCompositeDisposable = null;
         }
+    }
+
+    protected void showMessage(String msg) {
+        mLiveMessage.postValue(msg);
+    }
+
+    protected void showHud(boolean isShow) {
+        mLiveHud.postValue(isShow);
     }
 
 }

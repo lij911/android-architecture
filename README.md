@@ -29,3 +29,12 @@ https://juejin.im/post/5bba0f525188255c72285dd8
     https://juejin.im/entry/587499ff128fe1006b42f7de
     dagger 的 @Singleton 注解只能保证同个 component 注入的是同一个对象，所以要保证真正的单例需要同时保证 component 是唯一的
     retrofit 的 create 能保证单例，所以可以用不同的 component 注入（但是我现在懒的改了
+
+
+* recyclerView 复用机制
+    https://cloud.tencent.com/developer/article/1128137
+    最终调用的是 Recycler 的 tryGetViewHolderForPositionByDeadline 方法, 在该方法中，分4次去复用 ViewHolder
+    1. mAttachedScrap: 缓存在屏幕上的ViewHolder。
+    2. mCachedViews: 缓存屏幕外的ViewHolder，默认为2个。ListView对于屏幕外的缓存都会调用getView()。
+    3. mViewCacheExtensions: 需要用户定制，默认不实现。
+    4. mRecyclerPool: 缓存池，多个RecyclerView共用。

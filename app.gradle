@@ -32,10 +32,13 @@ android {
 }
 
 dependencies {
-    implementation deps.support.app_compat
     testImplementation deps.junit
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.espresso
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation deps.support.app_compat
+    implementation deps.support.constraint_layout
+
 
 }

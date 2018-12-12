@@ -1,4 +1,4 @@
-package com.lijing.dev.widget.recyclerview.adapter;
+package com.lijing.dev.widget.recyclerview;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;

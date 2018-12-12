@@ -1,8 +1,5 @@
 package com.lijing.dev.mvps.test;
 
-import android.widget.Toast;
-
-import com.lijing.dev.mvps.R;
 import com.lijing.dev.mvps.presenter.BaseAbstractPresenter;
 import com.lijing.dev.network.response.ApiResponseModel;
 import com.lijing.dev.network.response.ApiResponseObserver;
@@ -28,7 +25,7 @@ public class MainPresenter extends BaseAbstractPresenter<MainActivity> {
 
             @Override
             protected void onComplete(boolean isSuccess) {
-
+                showHud(false);
             }
         };
         subscribe(mTestApiService.test(), observer);

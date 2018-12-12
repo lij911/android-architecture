@@ -13,10 +13,8 @@ public interface IBasePresenter {
 
     /**
      * 注册请求
-     * @param observable
-     * @param abstractApiResponseObserver
      */
-    void subscribe(Observable observable, ApiResponseObserver abstractApiResponseObserver);
+    void subscribe(Observable observable, ApiResponseObserver apiResponseObserver);
 
     /**
      * 取消注册

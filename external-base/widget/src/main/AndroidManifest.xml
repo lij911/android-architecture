@@ -3,7 +3,7 @@
     package="com.lijing.dev.widget">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".test.MainActivity"></activity>
     </application>
 
 </manifest>

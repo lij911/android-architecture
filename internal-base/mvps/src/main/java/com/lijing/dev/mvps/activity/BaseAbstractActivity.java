@@ -1,5 +1,6 @@
 package com.lijing.dev.mvps.activity;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,6 @@ import javax.inject.Inject;
  */
 public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> extends AppCompatActivity implements IBaseActivity {
 
-    protected final String TAG = this.getClass().getSimpleName();
-
     @Inject
     protected P mPresenter;
 
@@ -27,8 +26,6 @@ public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> exte
 
     /**
      * Activity 初始化时调用，用于设置全局数据
-     *
-     * @param savedInstanceState
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,8 +83,6 @@ public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> exte
 
     /**
      * onStop 之前调用
-     *
-     * @param outState
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -97,9 +92,12 @@ public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> exte
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void attachPresenter() {
         if (mPresenter != null) {
             mPresenter.attachView(this);
+            mPresenter.mLiveHud.observe(this, (Observer<Boolean>) this::showHud);
+            mPresenter.mLiveMessage.observe(this, (Observer<String>) this::showMessage);
         }
     }
 
@@ -109,9 +107,6 @@ public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> exte
             mPresenter.detachView();
         }
     }
-
-
-    // override base view method
 
     @Override
     public final void showHud(boolean b) {
