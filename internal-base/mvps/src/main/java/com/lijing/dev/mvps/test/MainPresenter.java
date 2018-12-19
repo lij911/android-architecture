@@ -8,10 +8,15 @@ import com.lijing.dev.network.test.TestApiService;
 import javax.inject.Inject;
 
 public class MainPresenter extends BaseAbstractPresenter<MainActivity> {
-    @Inject
-    public TestApiService mTestApiService;
 
-    public void test(){
+    @Inject
+    TestApiService mTestApiService;
+
+    @Inject
+    public MainPresenter() {
+    }
+
+    public void test() {
         ApiResponseObserver<ApiResponseModel<String>> observer = new ApiResponseObserver<ApiResponseModel<String>>() {
 
             @Override
@@ -29,5 +34,9 @@ public class MainPresenter extends BaseAbstractPresenter<MainActivity> {
             }
         };
         subscribe(mTestApiService.test(), observer);
+    }
+
+    public void show(String msg) {
+        showMessage(msg);
     }
 }

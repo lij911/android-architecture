@@ -1,8 +1,8 @@
 package com.lijing.dev.mvps.di;
 
 
-import com.lijing.dev.network.di.ApiComponent;
-import com.lijing.dev.network.di.PreActivity;
+import com.lijing.dev.network.anno.PreActivity;
+import com.lijing.dev.network.di.BaseApiComponent;
 
 import dagger.Component;
 
@@ -11,13 +11,16 @@ import dagger.Component;
  * @author lijing
  */
 @PreActivity
-@Component(dependencies = {ApiComponent.class})
-public abstract class MvpsComponent {
+@Component(dependencies = {BaseApiComponent.class})
+public abstract class BaseMvpsComponent implements MvpsComponent {
 
-    @SuppressWarnings("StaticInitializerReferencesSubClass")
-    private static final MvpsComponent OUR_INSTANCE = DaggerMvpsComponent.builder().build();
+    private static final BaseMvpsComponent OUR_INSTANCE = DaggerBaseMvpsComponent
+            .builder()
+            .baseApiComponent(BaseApiComponent.getInstance())
+            .build();
 
-    public static MvpsComponent getInstance() {
+    public static BaseMvpsComponent getInstance() {
         return OUR_INSTANCE;
     }
+
 }

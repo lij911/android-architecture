@@ -1,4 +1,4 @@
-package com.lijing.dev.network.di;
+package com.lijing.dev.network.anno;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

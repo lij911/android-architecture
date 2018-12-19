@@ -1,6 +1,5 @@
 package com.lijing.dev.network.test;
 
-import com.lijing.dev.network.di.DaggerBaseApiComponent;
 import com.lijing.dev.network.response.ApiResponseModel;
 import com.lijing.dev.network.response.ApiResponseObserver;
 
@@ -17,7 +16,6 @@ public class TestPresenter {
 
 
     public TestPresenter() {
-        DaggerBaseApiComponent.create().inject(this);
     }
 
     public void test() {
