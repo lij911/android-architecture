@@ -12,7 +12,7 @@ public class IoUtils {
      *
      * @param closeable
      */
-    public static void safeClose( Closeable closeable) {
+    public static void safeClose(Closeable closeable) {
         if (closeable == null) {
             return;
         }

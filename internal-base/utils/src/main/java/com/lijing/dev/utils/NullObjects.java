@@ -1,4 +1,4 @@
-package com.lijing.dev.utils.thread;
+package com.lijing.dev.utils;
 
 import java.util.Collection;
 

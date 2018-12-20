@@ -8,13 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 下载所用到的 ThreadFactory
  * @author lijing
  */
-public class DownloadThreadFactory implements ThreadFactory {
+public class CustomThreadFactory implements ThreadFactory {
 
     private String tag;
     private AtomicInteger mAtomicInteger = new AtomicInteger(1);
 
 
-    public DownloadThreadFactory(String tag) {
+    public CustomThreadFactory(String tag) {
         this.tag = tag;
     }
 
