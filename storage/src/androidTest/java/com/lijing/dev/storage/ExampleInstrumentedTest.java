@@ -9,6 +9,8 @@ import com.lijing.dev.utils.ContextUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.File;
+
 import static org.junit.Assert.*;
 
 /**
@@ -25,6 +27,8 @@ public class ExampleInstrumentedTest {
         ContextUtils.setContext(appContext);
         String absolutePath = FileUtils.InternalStorage.INSTANCE.getFilesDir().getAbsolutePath();
         String absolutePath1 = FileUtils.InternalStorage.INSTANCE.getCacheDir().getAbsolutePath();
+        File cacheDir = FileUtils.InternalStorage.INSTANCE.getCacheDir();
+
         assertEquals("com.lijing.dev.storage.test", appContext.getPackageName());
     }
 
