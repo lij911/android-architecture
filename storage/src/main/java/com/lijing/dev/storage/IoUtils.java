@@ -1,4 +1,4 @@
-package com.lijing.dev.utils;
+package com.lijing.dev.storage;
 
 import java.io.Closeable;
 import java.io.IOException;
