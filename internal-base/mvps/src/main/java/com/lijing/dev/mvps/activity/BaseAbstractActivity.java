@@ -1,6 +1,5 @@
 package com.lijing.dev.mvps.activity;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -96,8 +95,6 @@ public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> exte
     private void attachPresenter() {
         if (mPresenter != null) {
             mPresenter.attachView(this);
-            mPresenter.mLiveHud.observe(this, (Observer<Boolean>) this::showHud);
-            mPresenter.mLiveMessage.observe(this, (Observer<String>) this::showMessage);
         }
     }
 

@@ -30,13 +30,13 @@ public class MainPresenter extends BaseAbstractPresenter<MainActivity> {
 
             @Override
             protected void onComplete(boolean isSuccess) {
-                showHud(false);
+                getView().showHud(false);
             }
         };
         subscribe(mTestApiService.test(), observer);
     }
 
     public void show(String msg) {
-        showMessage(msg);
+        getView().showMessage(msg);
     }
 }

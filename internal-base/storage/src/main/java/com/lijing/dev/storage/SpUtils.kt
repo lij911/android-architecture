@@ -21,6 +21,20 @@ object SpUtils {
     @JvmStatic
     public fun put(sharedPreferences: SharedPreferences?, key: String, value: Any) {
         var edit = sharedPreferences?.edit()
+        tryPut(edit, key, value)
+        edit?.apply()
+    }
+
+    @JvmStatic
+    public fun putAll(sharedPreferences: SharedPreferences?, map: Map<String, Any>) {
+        var edit = sharedPreferences?.edit()
+        for (entry in map.entries) {
+            tryPut(edit, entry.key, entry.value)
+        }
+        edit?.apply()
+    }
+
+    private fun tryPut(edit: SharedPreferences.Editor?, key: String, value: Any) {
         when (value) {
             is Int -> edit?.putInt(key, value)
             is String -> edit?.putString(key, value)
@@ -28,7 +42,6 @@ object SpUtils {
             is Float, is Double -> edit?.putFloat(key, value as Float)
             is Long -> edit?.putLong(key, value)
         }
-        edit?.apply()
     }
 
     @JvmStatic

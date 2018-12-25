@@ -20,10 +20,7 @@ public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBas
     private V mView;
     private CompositeDisposable mCompositeDisposable;
 
-    public SingleLiveEvent<Boolean> mLiveHud = new SingleLiveEvent<>();
-    public SingleLiveEvent<String> mLiveMessage = new SingleLiveEvent<>();
-
-    public BaseAbstractPresenter() {
+    protected BaseAbstractPresenter() {
     }
 
     public final void attachView(V view) {
@@ -69,14 +66,6 @@ public abstract class BaseAbstractPresenter<V extends IBaseView> implements IBas
             mCompositeDisposable.clear();
             mCompositeDisposable = null;
         }
-    }
-
-    protected void showMessage(String msg) {
-        mLiveMessage.postValue(msg);
-    }
-
-    protected void showHud(boolean isShow) {
-        mLiveHud.postValue(isShow);
     }
 
 }
