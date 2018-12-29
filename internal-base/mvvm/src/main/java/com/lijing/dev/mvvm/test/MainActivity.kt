@@ -1,13 +1,29 @@
 package com.lijing.dev.mvvm.test
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.widget.Button
 import com.lijing.dev.mvvm.R
+import com.lijing.dev.mvvm.core.BaseAbstractActivity
+import com.lijing.dev.mvvm.di.DaggerMvvmComponent
+import com.lijing.dev.network.di.BaseApiComponent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseAbstractActivity<MainViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getContentLayoutID(): Int {
+        return R.layout.activity_main
     }
+
+    override fun bindViewModel() {
+        DaggerMvvmComponent.builder()
+                .baseApiComponent(BaseApiComponent.getInstance())
+                .build().inject(this)
+    }
+
+    override fun initVariables() {
+    }
+
+    override fun initViewsAndEvents() {
+        findViewById<Button>(R.id.btn_show)
+                .setOnClickListener { viewModel.doSomeThing() }
+    }
+
 }

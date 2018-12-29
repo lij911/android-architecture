@@ -1,18 +1,22 @@
 package com.lijing.dev.network.di;
 
-import javax.inject.Singleton;
+import com.lijing.dev.network.annotation.ApiScope;
 
 import dagger.Component;
 
-@Singleton
+/**
+ *
+ * @author lijing
+ */
+@ApiScope
 @Component(modules = {ApiModule.class})
 public abstract class BaseApiComponent implements ApiComponent {
 
-    private static final BaseApiComponent ourInstance = DaggerBaseApiComponent.create();
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    private static final BaseApiComponent OUR_INSTANCE = DaggerBaseApiComponent.create();
 
     public static BaseApiComponent getInstance() {
-        return ourInstance;
+        return OUR_INSTANCE;
     }
-
 
 }

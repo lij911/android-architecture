@@ -6,6 +6,7 @@ import com.lijing.dev.network.BuildConfig;
 import com.lijing.dev.network.GeneralParams;
 import com.lijing.dev.network.Interceptor.BasicParamsInterceptor;
 import com.lijing.dev.network.NetworkConstant;
+import com.lijing.dev.network.annotation.ApiScope;
 import com.lijing.dev.network.converter.CustomGsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -26,7 +27,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 public class NetworkModule {
 
     @Provides
-    @Singleton
+    @ApiScope
     OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor, BasicParamsInterceptor basicParamsInterceptor) {
 
 
@@ -43,7 +44,7 @@ public class NetworkModule {
     }
 
     @Provides
-    @Singleton
+    @ApiScope
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit
                 .Builder()
@@ -55,7 +56,7 @@ public class NetworkModule {
     }
 
     @Provides
-    @Singleton
+    @ApiScope
     HttpLoggingInterceptor provideHttpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
@@ -67,13 +68,13 @@ public class NetworkModule {
     }
 
     @Provides
-    @Singleton
+    @ApiScope
     Gson provideGson() {
         return new GsonBuilder().create();
     }
 
     @Provides
-    @Singleton
+    @ApiScope
     BasicParamsInterceptor provideBasicParamsInterceptor() {
         return new BasicParamsInterceptor.Builder()
                 .addFilterUrls(GeneralParams.FILTER_URLS)

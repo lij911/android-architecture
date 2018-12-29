@@ -3,7 +3,6 @@ package com.lijing.dev.mvps.presenter;
 import android.os.Bundle;
 
 import com.lijing.dev.mvps.IBaseView;
-import com.lijing.dev.mvps.live.SingleLiveEvent;
 import com.lijing.dev.network.response.ApiResponseObserver;
 
 import io.reactivex.Observable;
