@@ -4,9 +4,6 @@ if (is_independent_module.toBoolean()) {
     apply from: rootProject.file('library.gradle')
 }
 
-kapt {
-    generateStubs = true
-}
 
 dependencies {
     implementation project(path: ':internal-base:utils')
@@ -15,7 +12,6 @@ dependencies {
     implementation project(path: ':external-base:widget')
 
     implementation deps.google.dagger
-    annotationProcessor deps.google.dagger_compiler
-//    kapt deps.google.dagger_compiler
+    kapt deps.google.dagger_compiler
     implementation deps.jetbrains.annotations
 }

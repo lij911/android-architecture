@@ -8,7 +8,7 @@ dependencies {
     implementation deps.support.app_compat
     implementation deps.support.v4
     implementation deps.google.dagger
-    annotationProcessor deps.google.dagger_compiler
+    kapt deps.google.dagger_compiler
     implementation deps.jetbrains.annotations
     implementation deps.rxjava2.rxjava
     implementation deps.rxjava2.rxandroid

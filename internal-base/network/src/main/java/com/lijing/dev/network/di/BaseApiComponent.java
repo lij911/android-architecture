@@ -5,7 +5,6 @@ import com.lijing.dev.network.annotation.ApiScope;
 import dagger.Component;
 
 /**
- *
  * @author lijing
  */
 @ApiScope
@@ -13,7 +12,7 @@ import dagger.Component;
 public abstract class BaseApiComponent implements ApiComponent {
 
     @SuppressWarnings("StaticInitializerReferencesSubClass")
-    private static final BaseApiComponent OUR_INSTANCE = null;
+    private static final BaseApiComponent OUR_INSTANCE = DaggerBaseApiComponent.create();
 
     public static BaseApiComponent getInstance() {
         return OUR_INSTANCE;

@@ -1,9 +1,9 @@
 apply from: rootProject.file('library.gradle')
 
 android {
-    defaultConfig {
-    }
+
 }
+
 dependencies {
     implementation deps.squareup.okhttp3
     implementation deps.squareup.okhttp_logging_interceptor
@@ -11,6 +11,6 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
     implementation deps.google.dagger
-    annotationProcessor deps.google.dagger_compiler
+    kapt deps.google.dagger_compiler
     implementation deps.jetbrains.annotations
 }
