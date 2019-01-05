@@ -1,8 +1,6 @@
 package com.lijing.dev.utils
 
-import android.app.Application
 import android.content.Context
-import com.squareup.leakcanary.LeakCanary
 import java.lang.ref.WeakReference
 
 object ContextUtils {
@@ -19,14 +17,14 @@ object ContextUtils {
         return weakReference?.get()
     }
 
-    @JvmStatic
-    public fun initLeakCanary(context: Context?) {
-        if (context == null || LeakCanary.isInAnalyzerProcess(context)) {
-            return
-        }
-        if (context is Application) {
-            LeakCanary.install(context)
-        }
-    }
+//    @JvmStatic
+//    public fun initLeakCanary(context: Context?) {
+//        if (context == null || LeakCanary.isInAnalyzerProcess(context)) {
+//            return
+//        }
+//        if (context is Application) {
+//            LeakCanary.install(context)
+//        }
+//    }
 
 }

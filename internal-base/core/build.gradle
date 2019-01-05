@@ -1,0 +1,11 @@
+apply from: rootProject.file('library.gradle')
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation "javax.inject:javax.inject:1@jar"
+//    implementation deps.google.dagger
+    kapt deps.google.dagger_compiler
+}

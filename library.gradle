@@ -39,4 +39,6 @@ dependencies {
     androidTestImplementation deps.android_test.espresso
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation deps.support.annotations
+
 }

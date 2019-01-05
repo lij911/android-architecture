@@ -7,14 +7,13 @@ kapt {
 dependencies {
     implementation project(path: ':internal-base:utils')
     implementation project(path: ':internal-base:network')
+    implementation project(path: ':internal-base:core')
 
     implementation deps.support.app_compat
-    implementation deps.support.v4
     implementation deps.support.constraint_layout
 
     implementation deps.google.dagger
     kapt deps.google.dagger_compiler
-    implementation deps.jetbrains.annotations
     implementation deps.widget.hud
     implementation deps.rxjava2.rxjava
     implementation deps.rxjava2.rxandroid

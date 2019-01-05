@@ -18,6 +18,8 @@ versions.gson = "2.8.2"
 versions.logger = "2.2.0"
 versions.okhttp_logging_interceptor = "3.10.0"
 versions.dagger = "2.20"
+versions.arouter = "1.4.1"
+versions.arouter_compiler = "1.2.2"
 
 // support 相关
 def support = [:]
@@ -67,9 +69,12 @@ android_test.runner = "com.android.support.test:runner:1.0.2"
 android_test.espresso = "com.android.support.test.espresso:espresso-core:3.0.2"
 deps.junit = "junit:junit:4.12"
 
+// alibaba
 
-def jetbrains = [:]
-jetbrains.annotations = "org.jetbrains:annotations:15.0"
+def alibaba = [:]
+alibaba.arouter = "com.alibaba:arouter-api:$versions.arouter"
+alibaba.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+
 
 // widget
 def widget = [:]
@@ -83,6 +88,7 @@ deps.retrofit = retrofit
 deps.google = google
 deps.support = support
 deps.android_test = android_test
-deps.jetbrains = jetbrains
 deps.widget = widget
+deps.alibaba = alibaba
+
 ext.deps = deps
