@@ -1,24 +1,12 @@
-if (is_independent_module.toBoolean()) {
-    apply from: rootProject.file('app.gradle')
-} else {
-    apply from: rootProject.file('library.gradle')
-}
+apply from: rootProject.file('library.gradle')
 
 android {
     defaultConfig {
         resourcePrefix "widget_"
     }
-    sourceSets {
-        main {
-            if (is_independent_module.toBoolean()) {
-                manifest.srcFile 'src/main/independent/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
 }
 
 dependencies {
+    implementation deps.support.app_compat
     implementation deps.support.recyclerview
 }

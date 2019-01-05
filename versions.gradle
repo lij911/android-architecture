@@ -17,7 +17,7 @@ versions.leakcanary = "1.6.1"
 versions.gson = "2.8.2"
 versions.logger = "2.2.0"
 versions.okhttp_logging_interceptor = "3.10.0"
-versions.dagger = "2.15"
+versions.dagger = "2.20"
 
 // support 相关
 def support = [:]

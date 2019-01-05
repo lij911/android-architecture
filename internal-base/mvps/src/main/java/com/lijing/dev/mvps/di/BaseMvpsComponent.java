@@ -14,10 +14,12 @@ import dagger.Component;
 @Component(dependencies = {BaseApiComponent.class})
 public abstract class BaseMvpsComponent implements MvpsComponent {
 
-    private static final BaseMvpsComponent OUR_INSTANCE = DaggerBaseMvpsComponent
-            .builder()
-            .baseApiComponent(BaseApiComponent.getInstance())
-            .build();
+    //    private static final BaseMvpsComponent OUR_INSTANCE = DaggerBaseMvpsComponent
+//            .builder()
+//            .baseApiComponent(BaseApiComponent.getInstance())
+//            .build();
+
+    private static final BaseMvpsComponent OUR_INSTANCE = null;
 
     public static BaseMvpsComponent getInstance() {
         return OUR_INSTANCE;

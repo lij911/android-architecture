@@ -1,9 +1,6 @@
 package com.lijing.dev.network;
 
 
-import com.lijing.dev.network.test.TestPresenter;
-import com.lijing.dev.network.test.TestPresenter2;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

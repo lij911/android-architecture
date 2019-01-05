@@ -1,8 +1,8 @@
 package com.lijing.dev.mvps.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
  *
  * @author lijing
  */
-public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> extends AppCompatActivity implements IBaseActivity {
+public abstract class BaseAbstractActivity<P extends BaseAbstractPresenter> extends Activity implements IBaseActivity {
 
     @Inject
     protected P mPresenter;

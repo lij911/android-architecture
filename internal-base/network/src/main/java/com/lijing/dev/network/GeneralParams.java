@@ -1,6 +1,7 @@
 package com.lijing.dev.network;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class GeneralParams {
     /**
      * 白名单内的 URL 不会添加以下所有参数
      */
-    public static final List<String> FILTER_URLS = new LinkedList<String>() {
+    public static final List<String> FILTER_URLS = new ArrayList<String>() {
         {
 //            add("");
         }

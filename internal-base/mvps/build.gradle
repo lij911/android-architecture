@@ -1,13 +1,12 @@
-if (is_independent_module.toBoolean()) {
-    apply from: rootProject.file('app.gradle')
-} else {
-    apply from: rootProject.file('library.gradle')
-}
+apply from: rootProject.file('library.gradle')
+
 
 dependencies {
     implementation project(path: ':internal-base:utils')
     implementation project(path: ':internal-base:network')
 
+    implementation deps.support.app_compat
+    implementation deps.support.v4
     implementation deps.google.dagger
     annotationProcessor deps.google.dagger_compiler
     implementation deps.jetbrains.annotations

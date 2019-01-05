@@ -1,9 +1,9 @@
 include ':app',
+//        ':app-module:todo',
         ':internal-base:storage',
         ':external-base:widget',
-        ':internal-base:res',
         ':internal-base:utils',
         ':internal-base:network',
-        ':internal-base:mvvm',
+//        ':internal-base:mvvm',
         ':internal-base:mvps'
 

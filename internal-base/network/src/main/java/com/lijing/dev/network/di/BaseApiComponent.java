@@ -13,7 +13,7 @@ import dagger.Component;
 public abstract class BaseApiComponent implements ApiComponent {
 
     @SuppressWarnings("StaticInitializerReferencesSubClass")
-    private static final BaseApiComponent OUR_INSTANCE = DaggerBaseApiComponent.create();
+    private static final BaseApiComponent OUR_INSTANCE = null;
 
     public static BaseApiComponent getInstance() {
         return OUR_INSTANCE;
