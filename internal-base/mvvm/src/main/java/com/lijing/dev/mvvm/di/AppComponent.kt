@@ -1,5 +1,4 @@
 package com.lijing.dev.mvvm.di
 
 
-interface MvvmComponent {
-}
+interface AppComponent

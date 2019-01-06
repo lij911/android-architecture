@@ -16,11 +16,11 @@ open class BaseViewModel : ViewModel() {
         TODO("do clear")
     }
 
-    @Suppress("NOTHING_TO_INLINE")
-    inline fun <T> Observable<T>.call(observer: Observer<in T>) {
-        observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer)
-    }
+//    @Suppress("NOTHING_TO_INLINE")
+//    inline fun <T> Observable<T>.call(observer: Observer<in T>) {
+//        observeOn(Schedulers.io())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer)
+//    }
 
 }

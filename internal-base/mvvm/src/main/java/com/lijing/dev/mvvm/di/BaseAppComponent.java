@@ -10,14 +10,15 @@ import dagger.Component;
  */
 @BasisScope
 @Component(dependencies = {BaseApiComponent.class})
-public abstract class BaseMvvmComponent implements MvvmComponent {
+public abstract class BaseAppComponent implements AppComponent {
 
     @SuppressWarnings("StaticInitializerReferencesSubClass")
-    private static final BaseMvvmComponent OUR_INSTANCE = DaggerBaseMvvmComponent.builder()
+    private static final BaseAppComponent OUR_INSTANCE = DaggerBaseAppComponent.builder()
             .baseApiComponent(BaseApiComponent.getInstance())
             .build();
 
-    public static BaseMvvmComponent getInstance() {
+    public static BaseAppComponent getInstance() {
         return OUR_INSTANCE;
     }
+
 }

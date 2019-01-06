@@ -7,10 +7,7 @@ import com.kaopiz.kprogresshud.KProgressHUD
 import javax.inject.Inject
 
 
-abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), IBaseActivity {
-
-    @Inject
-    lateinit var viewModel: VM
+abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), IBaseActivity<VM> {
 
     private val hud: KProgressHUD by lazy {
         KProgressHUD
@@ -31,7 +28,7 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
     }
 
     private fun attachViewModel() {
-        viewModel.hudEvent.observe(this, Observer { b -> showHud(b ?: false) })
+        getViewModel().hudEvent.observe(this, Observer { b -> showHud(b ?: false) })
     }
 
     override fun showHud(show: Boolean) {

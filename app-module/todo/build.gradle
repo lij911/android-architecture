@@ -20,9 +20,9 @@ dependencies {
 
     implementation deps.support.app_compat
     implementation deps.google.dagger
-    kapt deps.google.dagger_compiler
-
     implementation deps.alibaba.arouter
+
     kapt deps.alibaba.arouter_compiler
+    kapt deps.google.dagger_compiler
 
 }

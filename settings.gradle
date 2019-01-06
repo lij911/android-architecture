@@ -1,10 +1,10 @@
-include ':app',
-        ':app-module:todo',
+include ':app-module:todo',
         'internal-base:core',
         ':internal-base:storage',
         ':external-base:widget',
         ':internal-base:utils',
         ':internal-base:network',
+//        ':internal-base:mvps',
         ':internal-base:mvvm',
-        ':internal-base:mvps'
+        ':app'
 

@@ -2,7 +2,12 @@ package com.lijing.dev.mvvm.core
 
 import android.support.annotation.LayoutRes
 
-interface IBaseActivity : IBaseView {
+interface IBaseActivity<VM : BaseViewModel> : IBaseView {
+
+    /**
+     * 获取 ViewModel
+     */
+    fun getViewModel(): VM
 
     /**
      * 绑定 layout id
