@@ -10,12 +10,11 @@ dependencies {
     implementation project(path: ':internal-base:core')
 
     implementation deps.support.app_compat
-    implementation deps.support.v4
     implementation deps.google.dagger
-    kapt deps.google.dagger_compiler
     implementation deps.rxjava2.rxjava
     implementation deps.rxjava2.rxandroid
     implementation deps.widget.hud
 
+    kapt deps.google.dagger_compiler
 
 }

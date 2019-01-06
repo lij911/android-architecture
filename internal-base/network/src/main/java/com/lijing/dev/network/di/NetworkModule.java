@@ -6,12 +6,10 @@ import com.lijing.dev.network.BuildConfig;
 import com.lijing.dev.network.GeneralParams;
 import com.lijing.dev.network.Interceptor.BasicParamsInterceptor;
 import com.lijing.dev.network.NetworkConstant;
-import com.lijing.dev.network.annotation.ApiScope;
+import com.lijing.dev.core.annotation.ApiScope;
 import com.lijing.dev.network.converter.CustomGsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

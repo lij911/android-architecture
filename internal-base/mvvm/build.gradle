@@ -13,8 +13,9 @@ dependencies {
     implementation deps.support.constraint_layout
 
     implementation deps.google.dagger
-    kapt deps.google.dagger_compiler
     implementation deps.widget.hud
     implementation deps.rxjava2.rxjava
     implementation deps.rxjava2.rxandroid
+
+    kapt deps.google.dagger_compiler
 }

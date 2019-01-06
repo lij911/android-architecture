@@ -1,4 +1,4 @@
-package com.lijing.dev.network.annotation;
+package com.lijing.dev.core.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +11,5 @@ import javax.inject.Scope;
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BasisScope {
+public @interface AppScope {
 }

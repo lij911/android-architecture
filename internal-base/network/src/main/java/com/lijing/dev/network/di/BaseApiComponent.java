@@ -1,6 +1,6 @@
 package com.lijing.dev.network.di;
 
-import com.lijing.dev.network.annotation.ApiScope;
+import com.lijing.dev.core.annotation.ApiScope;
 
 import dagger.Component;
 

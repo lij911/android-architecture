@@ -1,10 +1,8 @@
 package com.lijing.dev.network.di;
 
 
-import com.lijing.dev.network.annotation.ApiScope;
+import com.lijing.dev.core.annotation.ApiScope;
 import com.lijing.dev.network.test.TestApiService;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

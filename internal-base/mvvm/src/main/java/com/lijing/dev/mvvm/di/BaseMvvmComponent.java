@@ -1,6 +1,6 @@
 package com.lijing.dev.mvvm.di;
 
-import com.lijing.dev.network.annotation.BasisScope;
+import com.lijing.dev.core.annotation.BasisScope;
 import com.lijing.dev.network.di.BaseApiComponent;
 
 import dagger.Component;
