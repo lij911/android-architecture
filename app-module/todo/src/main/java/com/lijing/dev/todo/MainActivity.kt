@@ -3,7 +3,7 @@ package com.lijing.dev.todo
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lijing.dev.core.RouterConstants
 import com.lijing.dev.mvvm.core.BaseAbstractActivity
-import com.lijing.dev.mvvm.di.BaseAppComponent
+import com.lijing.dev.mvvm.di.AppComponent
 import com.lijing.dev.todo.di.DaggerTodoComponent
 import javax.inject.Inject
 
@@ -22,15 +22,15 @@ class MainActivity : BaseAbstractActivity<MainViewModel>() {
     }
 
     override fun bindViewModel() {
-        DaggerTodoComponent.builder().baseAppComponent(BaseAppComponent.getInstance()).build().inject(this)
+        DaggerTodoComponent.builder()
+                .appComponent(AppComponent.instance).build()
+                .inject(this)
     }
 
     override fun initVariables() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initViewsAndEvents() {
-
     }
 
 }

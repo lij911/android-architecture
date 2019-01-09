@@ -7,6 +7,7 @@ android {
         versionName "1.0"
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
 }
 
 kapt {
@@ -17,14 +18,20 @@ kapt {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // library
     implementation project(path: ':internal-base:utils')
+    implementation project(path: ':internal-base:core')
     implementation project(path: ':internal-base:mvvm')
     implementation project(path: ':internal-base:network')
+    // module
+    implementation project(path: ':app-module:todo')
 
-    implementation deps.support.app_compat
+
     implementation deps.google.dagger
-    kapt deps.google.dagger_compiler
-
     implementation deps.alibaba.arouter
+
     kapt deps.alibaba.arouter_compiler
+    kapt deps.google.dagger_compiler
 }

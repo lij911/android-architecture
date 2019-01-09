@@ -4,7 +4,6 @@ include ':app-module:todo',
         ':external-base:widget',
         ':internal-base:utils',
         ':internal-base:network',
-//        ':internal-base:mvps',
         ':internal-base:mvvm',
         ':app'
 

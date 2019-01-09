@@ -6,6 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
+ * 用于 fragment
+ *
  * @author lijing
  */
 @Scope

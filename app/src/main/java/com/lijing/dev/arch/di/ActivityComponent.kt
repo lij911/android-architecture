@@ -1,13 +1,12 @@
-package com.lijing.dev.todo.di
+package com.lijing.dev.arch.di
 
+import com.lijing.dev.arch.SplashActivity
 import com.lijing.dev.core.annotation.ActivityScope
 import com.lijing.dev.mvvm.di.AppComponent
-import com.lijing.dev.todo.MainActivity
-
 import dagger.Component
 
 @ActivityScope
 @Component(dependencies = [AppComponent::class])
-interface TodoComponent {
-    fun inject(mainActivity: MainActivity)
+interface ActivityComponent {
+    fun inject(splashActivity: SplashActivity)
 }

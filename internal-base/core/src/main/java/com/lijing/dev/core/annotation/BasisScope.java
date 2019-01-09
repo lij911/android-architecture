@@ -6,6 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
+ * 提供底层各个功能件
  *
  * @author lijing
  */
