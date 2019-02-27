@@ -1,13 +1,15 @@
 package com.lijing.dev.arch
 
-import android.os.Handler
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lijing.dev.arch.di.DaggerActivityComponent
 import com.lijing.dev.core.RouterConstants
 import com.lijing.dev.mvvm.core.BaseAbstractActivity
 import com.lijing.dev.mvvm.di.AppComponent
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
+@Route(path = RouterConstants.App.ACTIVITY_SPLASH)
 class SplashActivity : BaseAbstractActivity<SplashViewModel>() {
 
     @Inject
@@ -31,7 +33,10 @@ class SplashActivity : BaseAbstractActivity<SplashViewModel>() {
     }
 
     override fun initViewsAndEvents() {
-        ARouter.getInstance().build(RouterConstants.ACTIVITY_TODO_MAIN).navigation()
+        thread {
+            Thread.sleep(1000)
+            ARouter.getInstance().build(RouterConstants.Todo.ACTIVITY_MAIN).navigation()
+        }
     }
 
 }

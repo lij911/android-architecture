@@ -7,7 +7,7 @@ import com.lijing.dev.mvvm.di.AppComponent
 import com.lijing.dev.todo.di.DaggerTodoComponent
 import javax.inject.Inject
 
-@Route(path = RouterConstants.ACTIVITY_TODO_MAIN)
+@Route(path = RouterConstants.Todo.ACTIVITY_MAIN)
 class MainActivity : BaseAbstractActivity<MainViewModel>() {
 
     @Inject
