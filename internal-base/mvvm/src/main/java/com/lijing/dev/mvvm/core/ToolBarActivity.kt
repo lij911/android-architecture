@@ -19,10 +19,9 @@ abstract class ToolBarActivity<VM : BaseViewModel> : BaseAbstractActivity<VM>() 
 
     private fun initToolbar() {
         toolbar = findViewById(R.id.action_bar)
-        setSupportActionBar(toolbar)
+        toolbar?.let {
+            setSupportActionBar(it)
+        }
     }
 
-    override fun lazyLoad(): Boolean {
-        return false
-    }
 }

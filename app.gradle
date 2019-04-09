@@ -39,6 +39,7 @@ dependencies {
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.espresso
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
     implementation deps.support.app_compat
     implementation deps.support.annotations

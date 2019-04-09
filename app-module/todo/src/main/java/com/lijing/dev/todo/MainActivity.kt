@@ -5,6 +5,8 @@ import com.lijing.dev.core.RouterConstants
 import com.lijing.dev.mvvm.core.BaseAbstractActivity
 import com.lijing.dev.mvvm.di.AppComponent
 import com.lijing.dev.todo.di.DaggerTodoComponent
+import com.lijing.dev.utils.BitmapUtils
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 @Route(path = RouterConstants.Todo.ACTIVITY_MAIN)
@@ -31,6 +33,8 @@ class MainActivity : BaseAbstractActivity<MainViewModel>() {
     }
 
     override fun initViewsAndEvents() {
+        val url = "https://b-gold-cdn.xitu.io/v3/static/img/android.fef4da1.png"
+        BitmapUtils.loadImage(url) { iv_image.setImageBitmap(it) }
     }
 
 }

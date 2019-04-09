@@ -30,7 +30,7 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
         attachViewModel()
         initVariables()
         initViewsAndEvents()
-        Looper.myQueue().addIdleHandler { lazyLoad() }
+//        Looper.myQueue().addIdleHandler { lazyLoad() }
     }
 
     private fun attachViewModel() {
@@ -48,6 +48,6 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
     /**
      * 使用 idle handler 在主线程空闲时调用
      */
-    abstract fun lazyLoad(): Boolean
+//     fun lazyLoad(): Boolean = Unit
 
 }
