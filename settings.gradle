@@ -1,5 +1,4 @@
 include ':app-module:todo',
-        ':app-module:module_demo',
         'internal-base:core',
         ':internal-base:storage',
         ':external-base:widget',
