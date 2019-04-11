@@ -1,8 +1,10 @@
 package com.lijing.dev.todo
 
+import android.support.v7.widget.Toolbar
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lijing.dev.core.RouterConstants
 import com.lijing.dev.mvvm.core.BaseAbstractActivity
+import com.lijing.dev.mvvm.core.ToolBarActivity
 import com.lijing.dev.mvvm.di.AppComponent
 import com.lijing.dev.todo.di.DaggerTodoComponent
 import com.lijing.dev.utils.BitmapUtils
@@ -10,7 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 @Route(path = RouterConstants.Todo.ACTIVITY_MAIN)
-class MainActivity : BaseAbstractActivity<MainViewModel>() {
+class MainActivity : ToolBarActivity<MainViewModel>() {
+
 
     @Inject
     lateinit var mainViewModel: MainViewModel
@@ -37,6 +40,10 @@ class MainActivity : BaseAbstractActivity<MainViewModel>() {
         BitmapUtils.loadImage(url) {
             iv_image.setImageBitmap(it)
         }
+    }
+
+    override fun setupToolBar(toolbar: Toolbar) {
+
     }
 
 }
