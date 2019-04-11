@@ -1,15 +1,11 @@
 package com.lijing.dev.mvvm.core
 
 import android.arch.lifecycle.Observer
-import android.os.Build
 import android.os.Bundle
-import android.os.Looper
-import android.os.MessageQueue
-import android.support.annotation.MainThread
-import android.support.annotation.RequiresApi
+import android.support.annotation.ColorInt
+import android.support.annotation.ColorRes
 import android.support.v7.app.AppCompatActivity
 import com.kaopiz.kprogresshud.KProgressHUD
-import javax.inject.Inject
 
 
 abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), IBaseActivity<VM> {
@@ -49,5 +45,9 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
      * 使用 idle handler 在主线程空闲时调用
      */
 //     fun lazyLoad(): Boolean = Unit
-
+//
+//    @ColorInt
+//    fun getColorInt(@ColorRes colorRes: Int): Int {
+//        return resources.getColor(colorRes)
+//    }
 }

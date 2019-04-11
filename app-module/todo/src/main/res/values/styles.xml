@@ -7,9 +7,17 @@
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/res_yellow</item>
         <item name="colorPrimaryDark">@color/res_black</item>
+
+        <item name="android:textColorSecondary">@color/res_white</item>
+        <item name="android:colorBackground">@color/res_gray</item>
+        <!--设置弹出位置的主题-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!--Toolbar弹出popup主题的设置-->
+    <style name="OverflowMenuTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--这个属性设置为false，就能使得popup在Toolbar的下面显示-->
+        <item name="overlapAnchor">false</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
