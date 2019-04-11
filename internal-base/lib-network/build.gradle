@@ -1,0 +1,15 @@
+apply from: rootProject.file('library.gradle')
+
+
+
+dependencies {
+    implementation project(path: ':internal-base:lib-core')
+
+    implementation deps.squareup.okhttp3
+    implementation deps.squareup.okhttp_logging_interceptor
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2
+    implementation deps.google.dagger
+    kapt deps.google.dagger_compiler
+}

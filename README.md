@@ -36,15 +36,14 @@ https://juejin.im/post/5bba0f525188255c72285dd8
     2. mCachedViews: 缓存屏幕外的ViewHolder，默认为2个。ListView对于屏幕外的缓存都会调用getView()。
     3. mViewCacheExtensions: 需要用户定制，默认不实现。
     4. mRecyclerPool: 缓存池，多个RecyclerView共用。
+
 * bitmap
     https://juejin.im/post/58c3b29761ff4b005d906730
 
 * LruCache
     https://juejin.im/entry/59f9851251882529c046837e
 
-
-
-* Android 协程
+* Android kotlin 协程
     https://www.jianshu.com/p/2659bbe0df16
 
 

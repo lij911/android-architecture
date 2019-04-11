@@ -1,9 +1,9 @@
 include ':app-module:todo',
-        'internal-base:core',
-        ':internal-base:storage',
+        ':internal-base:lib-res',
+        ':internal-base:lib-core',
         ':external-base:widget',
-        ':internal-base:utils',
-        ':internal-base:network',
-        ':internal-base:mvvm',
+        ':internal-base:lib-utils',
+        ':internal-base:lib-network',
+        ':internal-base:lib-mvvm',
         ':app'
 

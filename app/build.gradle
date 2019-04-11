@@ -21,10 +21,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // library
-    implementation project(path: ':internal-base:utils')
-    implementation project(path: ':internal-base:core')
-    implementation project(path: ':internal-base:mvvm')
-    implementation project(path: ':internal-base:network')
+    implementation project(path: ':internal-base:lib-utils')
+    implementation project(path: ':internal-base:lib-core')
+    implementation project(path: ':internal-base:lib-mvvm')
+    implementation project(path: ':internal-base:lib-network')
 
 
     // module

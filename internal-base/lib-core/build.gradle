@@ -1,0 +1,12 @@
+apply from: rootProject.file('library.gradle')
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation project(path: ':internal-base:lib-utils')
+
+    implementation deps.google.dagger
+    kapt deps.google.dagger_compiler
+}

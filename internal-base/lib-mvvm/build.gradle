@@ -1,0 +1,21 @@
+apply from: rootProject.file('library.gradle')
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation project(path: ':internal-base:lib-utils')
+    implementation project(path: ':internal-base:lib-network')
+    implementation project(path: ':internal-base:lib-core')
+
+    implementation deps.support.app_compat
+    implementation deps.support.constraint_layout
+
+    implementation deps.google.dagger
+    implementation deps.widget.hud
+    implementation deps.rxjava2.rxjava
+    implementation deps.rxjava2.rxandroid
+
+    kapt deps.google.dagger_compiler
+}
