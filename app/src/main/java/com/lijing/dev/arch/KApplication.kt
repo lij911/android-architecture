@@ -17,10 +17,16 @@ class KApplication : MultiDexApplication() {
         setupExternalConfig()
     }
 
+    /**
+     * 初始化自己的库
+     */
     private fun setupInternalConfig() {
         ContextUtils.setContext(this)
     }
 
+    /**
+     * 初始化第三方的库
+     */
     private fun setupExternalConfig() {
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

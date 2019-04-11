@@ -8,6 +8,9 @@ import kotlinx.coroutines.*
 import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
 
+/**
+ * 简简单单的 bitmap + 协程
+ */
 object BitmapUtils {
 
     private val bitmapCache: ConcurrentHashMap<String, Bitmap> = ConcurrentHashMap()

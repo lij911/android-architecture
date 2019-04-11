@@ -25,9 +25,12 @@ dependencies {
     implementation project(path: ':internal-base:core')
     implementation project(path: ':internal-base:mvvm')
     implementation project(path: ':internal-base:network')
-    // module
-    implementation project(path: ':app-module:todo')
 
+
+    // module
+    if (!is_independent_module.toBoolean()) {
+        implementation project(path: ':app-module:todo')
+    }
 
     implementation deps.google.dagger
     implementation deps.alibaba.arouter

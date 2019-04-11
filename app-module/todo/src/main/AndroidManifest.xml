@@ -5,7 +5,7 @@
 
     <application
         android:allowBackup="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".MainActivity" />

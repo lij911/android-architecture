@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.lijing.dev.widget.recyclerview.BaseViewHolder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -104,7 +106,7 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
      * @param item
      * @param position
      */
-    protected abstract void convert(VH helper, T item, int position);
+    protected abstract void convert(@NotNull VH helper, T item, int position);
 
     /* data modify function */
 
@@ -286,10 +288,23 @@ public abstract class BaseCommonAdapter<T, VH extends BaseViewHolder> extends Re
 
 
     public interface OnItemClickListener<T> {
+        /**
+         * 整个 Item 被点击时的事件
+         * @param viewHolder
+         * @param view
+         * @param position
+         */
         void onItemClick(BaseViewHolder viewHolder, View view, int position);
     }
 
     public interface OnItemLongClickListener<T> {
+        /**
+         * Item 被长点击时的事件
+         * @param viewHolder
+         * @param view
+         * @param position
+         * @return
+         */
         boolean onItemLongClick(BaseViewHolder viewHolder, View view, int position);
     }
 }

@@ -4,6 +4,17 @@ if (is_independent_module.toBoolean()) {
     apply from: rootProject.file('library.gradle')
 }
 
+android {
+    sourceSets {
+        main {
+            if (is_independent_module.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
 kapt {
     generateStubs = true
     arguments {

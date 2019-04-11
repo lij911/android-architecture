@@ -1,1 +1,7 @@
-<manifest package="com.lijing.dev.network" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lijing.dev.network">
+
+    <!--网络访问权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
