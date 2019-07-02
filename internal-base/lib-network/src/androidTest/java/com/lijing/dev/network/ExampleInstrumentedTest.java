@@ -25,7 +25,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void networkTest(){
-        TestPresenter testPresenter = new TestPresenter();
-        testPresenter.test();
+
     }
 }

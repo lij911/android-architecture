@@ -48,10 +48,6 @@ class MainActivity : ToolBarActivity<MainViewModel>() {
 
     override fun initViewsAndEvents() {
         initStatusBar(R.color.res_black) // 太爽了吧
-        val url = "https://b-gold-cdn.xitu.io/v3/static/img/android.fef4da1.png"
-        BitmapUtils.loadImage(url) {
-            iv_image.setImageBitmap(it)
-        }
     }
 
     override fun setupToolBar(toolbar: Toolbar) {
