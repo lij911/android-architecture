@@ -1,12 +1,20 @@
 package com.lijing.dev.todo.view
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import com.lijing.dev.utils.DensityUtil
 
 class AViewGroup : ViewGroup {
+
+    var paint = Paint().let {
+        it.color = Color.YELLOW
+        it
+    }
 
     constructor(context: Context) : super(context) {}
 
@@ -81,5 +89,15 @@ class AViewGroup : ViewGroup {
             top += child.measuredHeight
             index++
         }
+    }
+
+    /**
+     * 不设置 background 的话，不回调用该方法
+     */
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+        val x = measuredWidth / 2.0F
+        val y = measuredHeight / 2.0F
+        canvas?.drawCircle(x, y, Math.min(x, y), paint)
     }
 }
