@@ -40,6 +40,8 @@ def google = [:]
 google.gson = "com.google.code.gson:gson:$versions.gson"
 google.dagger = "com.google.dagger:dagger:$versions.dagger"
 google.dagger_compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+google.glide = "com.github.bumptech.glide:glide:4.9.0"
+google.glide_compiler = "com.github.bumptech.glide:compiler:4.9.0"
 
 // retrofit 和 okhttp 相关
 def retrofit = [:]

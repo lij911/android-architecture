@@ -32,9 +32,10 @@ dependencies {
 
     implementation deps.support.app_compat
     implementation deps.google.dagger
+    implementation deps.google.glide
     implementation deps.alibaba.arouter
 
     kapt deps.alibaba.arouter_compiler
     kapt deps.google.dagger_compiler
-
+    kapt deps.google.glide_compiler
 }
