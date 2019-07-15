@@ -3,12 +3,14 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light" />
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
         <item name="colorPrimary">@color/res_yellow</item>
         <item name="colorPrimaryDark">@color/res_black</item>
-        <item name="android:textColorSecondary">@color/res_gray</item>
-        <item name="android:colorBackground">@color/res_white</item>
+        <item name="android:textColorPrimary">@color/res_text_primary</item>
+        <item name="android:colorBackground">@color/res_background</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!--设置弹出位置的主题-->
         <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item>
     </style>

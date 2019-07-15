@@ -1,13 +1,16 @@
 <resources>
 
     <style name="AppTheme.NoActionBar">
+
+        <item name="colorPrimary">@color/res_yellow</item>
+        <item name="colorPrimaryDark">@color/res_black</item>
+        <item name="android:colorBackground">@color/res_white</item>
+        <item name="android:textColorPrimary">@color/res_text_primary</item>
+
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="colorPrimary">@color/res_yellow</item>
-        <item name="colorPrimaryDark">@color/res_black</item>
-        <item name="android:textColor">@color/res_white</item>
-        <item name="android:colorBackground">@color/res_gray</item>
         <!--ToolBar的按钮的色调-->
         <item name="android:textColorSecondary">@color/res_white</item>
         <!--设置弹出位置的主题-->

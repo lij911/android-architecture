@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="res_white">#FFFFFF</color>
+    <color name="res_background">#F7F7F7</color>
     <color name="res_black">#0E0E0E</color>
     <color name="res_yellow">#E0C67F</color>
     <color name="res_gray">#B6B4A8</color>
+    <color name="res_text_primary">#333333</color>
+
 </resources>
