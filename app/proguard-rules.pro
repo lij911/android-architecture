@@ -40,8 +40,29 @@
 # 不对android.support包下的代码警告（如果我们打包的版本低于support包下某些类的使用版本，会出现警告的问题）
 -dontwarn android.support.**
 
+-dontwarn javax.annotation.**
+-dontwarn javax.lang.model.element.**
+
 # 不混淆Keep类
 -keep class android.support.annotation.Keep
 
 # 保留用于调试堆栈跟踪的行号信息（为了后期调试方便，建议配置）
 -keepattributes SourceFile,LineNumberTable
+
+# okhttp3
+-keep class okhttp3.**{ *; }
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
+# retrofit2
+-keep class retrofit2.** { *; }
+-dontwarn retrofit2.Platform$Java8
+
+# arouter
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
+-keep class * implements com.alibaba.android.arouter.facade.template.IProvider
