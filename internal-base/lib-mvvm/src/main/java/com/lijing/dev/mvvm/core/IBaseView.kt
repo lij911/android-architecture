@@ -1,7 +1,33 @@
 package com.lijing.dev.mvvm.core
 
-interface IBaseView {
+import android.support.annotation.LayoutRes
 
-    fun showHud(show: Boolean)
+interface IBaseView<VM : BaseViewModel> : IBaseCommand {
+
+    /**
+     * 获取 ViewModel
+     */
+    fun getViewModel(): VM
+
+    /**
+     * 绑定 layout id
+     */
+    @LayoutRes
+    fun getContentLayoutID(): Int
+
+    /**
+     * 绑定 ViewModel
+     */
+    fun subscribeViewModel()
+
+    /**
+     * 初始化变量
+     */
+    fun initVariables()
+
+    /**
+     * 初始化界面
+     */
+    fun initViewsAndEvents()
 
 }

@@ -1,12 +1,20 @@
 apply from: rootProject.file('library.gradle')
-
+apply plugin: 'org.greenrobot.greendao'
 kapt {
     generateStubs = true
+}
+
+greendao {
+
+    schemaVersion 1
+    daoPackage 'com.lijing.dev.lib.core.database.dao'
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
     implementation project(path: ':internal-base:lib-utils')
 
     implementation deps.google.dagger
+    implementation 'org.greenrobot:greendao:3.2.2'
     kapt deps.google.dagger_compiler
 }

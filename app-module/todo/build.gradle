@@ -34,6 +34,7 @@ dependencies {
     implementation deps.google.dagger
     implementation deps.google.glide
     implementation deps.alibaba.arouter
+    implementation deps.support.recyclerview
 
     kapt deps.alibaba.arouter_compiler
     kapt deps.google.dagger_compiler

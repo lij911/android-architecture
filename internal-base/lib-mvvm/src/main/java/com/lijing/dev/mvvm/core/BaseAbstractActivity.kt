@@ -2,13 +2,12 @@ package com.lijing.dev.mvvm.core
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import com.kaopiz.kprogresshud.KProgressHUD
 
 
-abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), IBaseActivity<VM> {
+abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), IBaseView<VM> {
 
     private val hud: KProgressHUD by lazy {
         KProgressHUD
@@ -22,15 +21,19 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getContentLayoutID())
-        bindViewModel()
-        attachViewModel()
+        subscribeViewModel()
+        attachViewModelInternal(getViewModel())
         initVariables()
         initViewsAndEvents()
-//        Looper.myQueue().addIdleHandler { lazyLoad() }
+        enqueueIdleTask()
     }
 
-    private fun attachViewModel() {
-        getViewModel().hudEvent.observe(this, Observer { b -> showHud(b ?: false) })
+
+    /**
+     * 内部去绑定 ViewModel
+     */
+    fun attachViewModelInternal(viewModel: BaseViewModel) {
+        viewModel.hudEvent.observe(this, Observer { b -> showHud(b ?: false) })
     }
 
     override fun showHud(show: Boolean) {
@@ -41,13 +44,17 @@ abstract class BaseAbstractActivity<VM : BaseViewModel> : AppCompatActivity(), I
         }
     }
 
+
+    private fun enqueueIdleTask() {
+        Looper.myQueue().addIdleHandler {
+            idleTask()
+            return@addIdleHandler false
+        }
+    }
+
     /**
      * 使用 idle handler 在主线程空闲时调用
      */
-//     fun lazyLoad(): Boolean = Unit
-//
-//    @ColorInt
-//    fun getColorInt(@ColorRes colorRes: Int): Int {
-//        return resources.getColor(colorRes)
-//    }
+    open fun idleTask() {}
+
 }

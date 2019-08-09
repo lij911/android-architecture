@@ -22,8 +22,8 @@ public class BView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(doLocalMeasure(DensityUtil.INSTANCE.dip2px(getContext(), 60), widthMeasureSpec),
-                doLocalMeasure(DensityUtil.INSTANCE.dip2px(getContext(), 40), heightMeasureSpec));
+        setMeasuredDimension(doLocalMeasure(DensityUtil.dip2px(getContext(), 60), widthMeasureSpec),
+                doLocalMeasure(DensityUtil.dip2px(getContext(), 40), heightMeasureSpec));
     }
 
     int doLocalMeasure(int defaultSize, int measureSpec) {

@@ -23,7 +23,7 @@ class SplashActivity : BaseAbstractActivity<SplashViewModel>() {
         return R.layout.activity_splash
     }
 
-    override fun bindViewModel() {
+    override fun subscribeViewModel() {
         DaggerActivityComponent
                 .builder().appComponent(AppComponent.instance).build()
                 .inject(this)
