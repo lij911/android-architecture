@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.fragment_framework_content.*
 
 class BasicFragment : BaseAbstractFragment<BasicViewModel>() {
 
+    private var basicAdapter: BasicAdapter? = null
+
+
     override fun getViewModel(): BasicViewModel {
         return ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(BasicViewModel::class.java)
     }
@@ -21,7 +24,6 @@ class BasicFragment : BaseAbstractFragment<BasicViewModel>() {
         })
     }
 
-    var basicAdapter: BasicAdapter? = null
     override fun initVariables() {
         basicAdapter = BasicAdapter()
     }

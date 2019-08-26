@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lijing.dev.todo">
 
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--请求访问使用照相设备-->
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +22,8 @@
 
         </activity>
 
+        <service android:name=".service.StartableService" />
+        <service android:name=".service.BindableService" />
     </application>
 
 </manifest>
