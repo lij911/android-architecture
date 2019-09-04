@@ -33,9 +33,6 @@ class BasicFragment : BaseAbstractFragment<BasicViewModel>() {
         linearLayoutManager.recycleChildrenOnDetach = true
         rv_basic_list.layoutManager = linearLayoutManager
         rv_basic_list.adapter = basicAdapter
-        basicAdapter?.addOnItemClickListener { viewHolder, view, position ->
-
-        }
     }
 
     override fun idleTask() {

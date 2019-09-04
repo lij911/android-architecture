@@ -35,6 +35,7 @@ class MainActivity : ToolBarActivity<MainViewModel>() {
 
     override fun initVariables() {
         mainPagerAdapter = MainPagerAdapter(supportFragmentManager, arrayOf(basicFragment.value as Fragment, thirdPartyFragment.value as Fragment))
+
     }
 
     override fun initViewsAndEvents() {
